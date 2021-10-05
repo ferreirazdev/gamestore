@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { AppState } from "../../redux/@types"
-import { fetchAllProducts } from "../../redux/actions"
+import { addProductToCart, fetchAllProducts } from "../../redux/actions"
 
 import { ProductState } from "../../redux/@types"
 import { ProductCard } from "../../components/ProductCard"
+
+import { Cart } from '../../components/Cart'
 
 
 import {
@@ -17,6 +19,10 @@ import {
 
 export function Home(){
   const reduxProducts = useSelector((state: AppState) => state.productReducer.products)
+  const isLoading = useSelector((state: AppState) => state.productReducer.isLoading)
+
+  const cart = useSelector((state: AppState) => state.cartReducer.cart)
+
   const [products, setProducts] = useState<ProductState[]>([])
 
   const dispatch = useDispatch()
@@ -31,17 +37,16 @@ export function Home(){
 
   return (
     <Container>
-      <Header>
-
-      </Header>
       <ContentWrapper>
         <ProductWrapper>
           {products.map((product) => (
             <ProductCard 
-              id={product.id}
+              key={product.id}
               name={product.name}
               price={product.price}
               image={product.image}
+              onClick={() => dispatch(addProductToCart(product))}
+              disabled={cart.includes(product)}
             />
           ))}
         </ProductWrapper>

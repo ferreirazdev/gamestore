@@ -8,11 +8,21 @@ import {
   ProductImage
 } from './styles'
 
+type ProductCardProps = {
+  name: string;
+  price: number;
+  image: string;
+  onClick:Function;
+  disabled:boolean;
+}
+
 export function ProductCard({
   name,
   price,
-  image
-}: ProductState){
+  image,
+  onClick,
+  disabled
+}: ProductCardProps){
   return (
     <Container key={name}>
       <div>
@@ -20,8 +30,8 @@ export function ProductCard({
         <ProductImage src={`assets/${image}`} alt={name}/>
         <div className="buy">
           <Price>{price}</Price>
-          <button>
-            Comprar
+          <button disabled={disabled} onClick={() => onClick()}>
+            Adicionar ao Carrinho
           </button>
         </div>
       </div>
