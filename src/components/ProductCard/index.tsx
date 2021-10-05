@@ -13,7 +13,7 @@ type ProductCardProps = {
   price: number;
   image: string;
   onClick:Function;
-  disabled:boolean;
+  buttonTitle: string;
 }
 
 export function ProductCard({
@@ -21,7 +21,7 @@ export function ProductCard({
   price,
   image,
   onClick,
-  disabled
+  buttonTitle
 }: ProductCardProps){
   return (
     <Container key={name}>
@@ -30,8 +30,8 @@ export function ProductCard({
         <ProductImage src={`assets/${image}`} alt={name}/>
         <div className="buy">
           <Price>{price}</Price>
-          <button disabled={disabled} onClick={() => onClick()}>
-            Adicionar ao Carrinho
+          <button onClick={() => onClick()}>
+            {buttonTitle}
           </button>
         </div>
       </div>

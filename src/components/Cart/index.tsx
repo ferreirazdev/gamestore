@@ -1,17 +1,13 @@
-import { useDispatch } from "react-redux"
+import { useSelector } from "react-redux"
+import { AppState } from "../../redux/@types"
 
-type CartMenuProps = {
-  cart: {}[];
-  onClick: Function;
-  menuOpen:boolean;
-  anchorEl:null | HTMLElement
-}
+export function Cart(){
 
-export function Cart({ cart, onClick, menuOpen, anchorEl}: CartMenuProps){
-
-  const dispatch = useDispatch()
+  const cart = useSelector((state: AppState) => state.cartReducer.cart)
 
   return (
-    <div>Cart</div>
+    <div>
+      {cart && cart.length}
+    </div>
   )
 }

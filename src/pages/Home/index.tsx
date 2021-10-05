@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { AppState } from "../../redux/@types"
-import { addProductToCart, fetchAllProducts } from "../../redux/actions"
+import { addProductToCart, fetchAllProducts, removeProductFromCart } from "../../redux/actions"
 
 import { ProductState } from "../../redux/@types"
 import { ProductCard } from "../../components/ProductCard"
@@ -46,7 +46,7 @@ export function Home(){
               price={product.price}
               image={product.image}
               onClick={() => dispatch(addProductToCart(product))}
-              disabled={cart.includes(product)}
+              buttonTitle="Adicionar"
             />
           ))}
         </ProductWrapper>

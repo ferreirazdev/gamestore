@@ -5,6 +5,6 @@ import { Home } from '../pages/Home'
 export const Routes = () => (
   <Switch>
     <Route exact path="/" component={Home}/>
-    <Route path="/checkout/:id" component={Checkout}/>
+    <Route path="/checkout" component={Checkout}/>
   </Switch>
 )
