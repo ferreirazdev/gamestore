@@ -24,7 +24,7 @@ export function ProductCard({
   buttonTitle
 }: ProductCardProps){
   return (
-    <Container key={name}>
+    <Container>
       <div>
         <Name>{name}</Name>
         <ProductImage src={`assets/${image}`} alt={name}/>

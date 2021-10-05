@@ -8,7 +8,9 @@ import {
 //Initital State
 const cartFromLocal = localStorage.getItem('cart')
 
+
 let initialCart: [] = []
+
 
 if(cartFromLocal){
   initialCart = JSON.parse(cartFromLocal)
@@ -17,6 +19,7 @@ if(cartFromLocal){
 const initState: CartReducerState = {
   cart: initialCart
 }
+
 
 //Cart Reducer
 export default function cartReducer(
