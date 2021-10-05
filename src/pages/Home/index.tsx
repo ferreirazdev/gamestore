@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { AppState } from "../../redux/@types"
@@ -6,6 +5,14 @@ import { fetchAllProducts } from "../../redux/actions"
 
 import { ProductState } from "../../redux/@types"
 import { ProductCard } from "../../components/ProductCard"
+
+
+import {
+  Container,
+  Header,
+  ContentWrapper,
+  ProductWrapper
+} from './styles'
 
 
 export function Home(){
@@ -16,21 +23,29 @@ export function Home(){
 
   useEffect(() => {
     dispatch(fetchAllProducts())
+  }, [dispatch])
+
+  useEffect(() => {
     setProducts(reduxProducts)
-  }, [dispatch, reduxProducts])
+  }, [reduxProducts])
 
   return (
-    <div>
-      <ul>
-        {products.map((product) => (
-          <ProductCard 
-            id={product.id}
-            name={product.name}
-            price={product.price}
-            image={product.image}
-          />
-        ))}
-      </ul>
-    </div>
+    <Container>
+      <Header>
+
+      </Header>
+      <ContentWrapper>
+        <ProductWrapper>
+          {products.map((product) => (
+            <ProductCard 
+              id={product.id}
+              name={product.name}
+              price={product.price}
+              image={product.image}
+            />
+          ))}
+        </ProductWrapper>
+      </ContentWrapper>
+    </Container>
   )
 } 
