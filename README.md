@@ -1,8 +1,8 @@
 # Gamestore
 
 <div>
-   <img src="https://github.com/ferreirazdev/gamestore/public/print1.png?raw=true" width="400px" />
-   <img src="https://github.com/ferreirazdev/gamestore/public/print3.png?raw=true" width="400px" />
+   <img src="/public/print1.png?raw=true" width="400px" />
+   <img src="/public/print2.png?raw=true" width="400px" />
 </div>
 
 # :construction_worker: Executando
