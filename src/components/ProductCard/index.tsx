@@ -12,6 +12,7 @@ type ProductCardProps = {
   name: string;
   price: number;
   image: string;
+  score: number;
   onClick:Function;
   buttonTitle: string;
 }
@@ -20,6 +21,7 @@ export function ProductCard({
   name,
   price,
   image,
+  score,
   onClick,
   buttonTitle
 }: ProductCardProps){
@@ -33,6 +35,7 @@ export function ProductCard({
           <button onClick={() => onClick()}>
             {buttonTitle}
           </button>
+          <h3>{score}</h3>
         </div>
       </div>
     </Container>

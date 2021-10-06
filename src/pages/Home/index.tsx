@@ -6,7 +6,6 @@ import { addProductToCart, fetchAllProducts, removeProductFromCart } from "../..
 import { ProductState } from "../../redux/@types"
 import { ProductCard } from "../../components/ProductCard"
 
-import { Cart } from '../../components/Cart'
 
 
 import {
@@ -39,11 +38,12 @@ export function Home(){
     <Container>
       <ContentWrapper>
         <ProductWrapper>
-          {products.map((product) => (
+          {products.map((product: any) => (
             <ProductCard 
               key={product.id}
               name={product.name}
               price={product.price}
+              score={product.score}
               image={product.image}
               onClick={() => dispatch(addProductToCart(product))}
               buttonTitle="Adicionar"

@@ -14,13 +14,11 @@ export function Checkout(){
     dispatch(fetchAllProducts())
   }, [dispatch])
 
-  
   const cartTotal = {
     subTotal: 0,
     freight: 10,
     total: 0
   }
-
   
   function makeSum(){
     const price = cart.map((product: any) => (
@@ -35,7 +33,7 @@ export function Checkout(){
       cartTotal.freight = 0
     }
     cartTotal.total = cartTotal.subTotal + cartTotal.freight
-
+    
   }
   makeSum()
 
@@ -60,11 +58,11 @@ export function Checkout(){
       <h1>{formatedData.formatedFreight}</h1>
       <h1>Total</h1>
       <h1>{formatedData.formatedTotal}</h1>
-      {cart && cart.map((product: CartProduct) =>(
+      {cart && cart.map((product: any) =>(
           <ProductCard 
-              key={product.id}
               name={product.name}
               price={product.price}
+              score={product.score}
               image={product.image}
               onClick={() => dispatch(removeProductFromCart(product))}
               buttonTitle="remover"
