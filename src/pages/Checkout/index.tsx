@@ -1,9 +1,18 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { CheckoutProductCard } from "../../components/CheckoutProductCard"
 import { ProductCard } from "../../components/ProductCard"
 import { AppState, CartProduct, ProductState } from "../../redux/@types"
 import { fetchAllProducts, removeProductFromCart } from "../../redux/actions"
 
+import {
+  Button,
+  Container,
+  ItemContainer,
+  ItemWrapper,
+  PurchaseConfirmationContainer,
+  PurchaseConfirmationWrapper
+} from './styles'
 
 
 export function Checkout(){
@@ -50,24 +59,42 @@ export function Checkout(){
   
 
   return (
-    <div>
-      <div>Checkout</div>
-      <h1>Subtotal</h1>
-      <h1>{formatedData.formatedSubTotal}</h1>
-      <h1>Frete</h1>
-      <h1>{formatedData.formatedFreight}</h1>
-      <h1>Total</h1>
-      <h1>{formatedData.formatedTotal}</h1>
-      {cart && cart.map((product: any) =>(
-          <ProductCard 
-              name={product.name}
-              price={product.price}
-              score={product.score}
-              image={product.image}
-              onClick={() => dispatch(removeProductFromCart(product))}
-              buttonTitle="remover"
-            />
-      ))}
-    </div>
+    <Container>
+      <ItemContainer>
+        <ItemWrapper>
+          {cart && cart.map((product: any) =>(
+              <CheckoutProductCard 
+                name={product.name}
+                price={product.price}
+                score={product.score}
+                image={product.image}
+                onClick={() => dispatch(removeProductFromCart(product))}
+                buttonTitle="Remover do Carrinho"
+               />
+          ))}
+        </ItemWrapper>
+      </ItemContainer>
+      <PurchaseConfirmationContainer>
+        <PurchaseConfirmationWrapper>
+          <h1 className="title">Confirme sua compra</h1>
+          <div className="infoPurchase">
+            <h1>Subtotal:</h1>
+            <p>{formatedData.formatedSubTotal}</p>
+          </div>
+          <div className="infoPurchase">
+            <h1>Frete:</h1>
+            <p>{formatedData.formatedFreight}</p>
+          </div>
+          <div className="infoPurchase">
+            <h1>Total:</h1>
+            <p className="total">{formatedData.formatedTotal}</p>
+          </div>
+          <Button>Confirmar compra</Button>
+        </PurchaseConfirmationWrapper>
+      </PurchaseConfirmationContainer>
+      
+      
+      
+    </Container>
   )
 }

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 100vw;
+  width: 98vw;
   padding: 20px 20px;
   justify-content: space-between;
   align-items: center;
@@ -14,6 +14,8 @@ export const LogoWrapper = styled.div`
   align-items: center;
   border-right: 3px solid #1F2029;
   padding: 0 100px;
+  cursor: pointer;
+  
   img {
     width: 40px;
     height: 40px;
@@ -47,16 +49,18 @@ export const SearchWrapper = styled.div`
 export const ButtonsWrapper = styled.div`
   padding: 0 100px;
   border-left: 3px solid #1F2029;
+  display: flex;
+  align-items: center;
 
   button {
     width: 70px;
     height: 40px;
     background: #8d1ba5;
     border: none;
-    border-radius: 15px;
+    border-radius: 10px;
     color: var(--gray-50);
     font-weight: 500;
-    
+    margin-left: 30px;
     &:hover {
       background: #A100C2;
     }

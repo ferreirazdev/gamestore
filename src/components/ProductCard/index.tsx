@@ -3,9 +3,13 @@ import { Link } from "react-router-dom"
 
 import {
   Container,
+  Wrapper,
   Name,
   Price,
-  ProductImage
+  ProductImage,
+  InfoWrapper,
+  Score,
+  Button
 } from './styles'
 
 type ProductCardProps = {
@@ -27,17 +31,19 @@ export function ProductCard({
 }: ProductCardProps){
   return (
     <Container>
-      <div>
+      <Wrapper className="wrapper">
         <Name>{name}</Name>
         <ProductImage src={`assets/${image}`} alt={name}/>
-        <div className="buy">
-          <Price>{price}</Price>
-          <button onClick={() => onClick()}>
+        <InfoWrapper>
+          <div>
+            <Price>{`R$ ${price}`}</Price>
+            <Score>{`⭐ ${score}`}</Score>
+          </div>
+          <Button onClick={() => onClick()}>
             {buttonTitle}
-          </button>
-          <h3>{score}</h3>
-        </div>
-      </div>
+          </Button>
+        </InfoWrapper>
+      </Wrapper>
     </Container>
   )
 }
